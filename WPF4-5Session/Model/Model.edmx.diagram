@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b6c12d57b254a4d9004e70a56eb03e7" Name="Diagram1">
+        <EntityTypeShape EntityType="dbStrazhnikModel.DataAddPermission" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.DataViewPermission" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.Gender" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.ReportPermission" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.User" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.UserLogin" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.UserType" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbStrazhnikModel.Verify" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_DataAddPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_DataViewPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_ReportPermission" ManuallyRouted="false" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_UserType" ManuallyRouted="false" />
+        <AssociationConnector Association="dbStrazhnikModel.FK_User_Verify" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
