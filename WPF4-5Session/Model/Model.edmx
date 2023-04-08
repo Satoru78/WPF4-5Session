@@ -58,10 +58,10 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Image" Type="nvarchar" MaxLength="1000" />
-          <Property Name="IDDataAddPermission" Type="int" />
-          <Property Name="IDReportPermission" Type="int" />
-          <Property Name="IDDataViewPermission" Type="int" />
-          <Property Name="IDVerify" Type="int" />
+          <Property Name="IDDataAddPermission" Type="bit" />
+          <Property Name="IDReportPermission" Type="bit" />
+          <Property Name="IDDataViewPermission" Type="bit" />
+          <Property Name="IDVerify" Type="bit" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -88,30 +88,6 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK_User_DataAddPermission">
-          <End Role="DataAddPermission" Type="Self.DataAddPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DataAddPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDDataAddPermission" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_DataViewPermission">
-          <End Role="DataViewPermission" Type="Self.DataViewPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DataViewPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDDataViewPermission" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -121,18 +97,6 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="IDGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_ReportPermission">
-          <End Role="ReportPermission" Type="Self.ReportPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReportPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDReportPermission" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -148,18 +112,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Verify">
-          <End Role="Verify" Type="Self.Verify" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verify">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDVerify" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище dbStrazhnikModelContainer">
           <EntitySet Name="DataAddPermission" EntityType="Self.DataAddPermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DataViewPermission" EntityType="Self.DataViewPermission" Schema="dbo" store:Type="Tables" />
@@ -170,28 +122,12 @@
           <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verify" EntityType="Self.Verify" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_User_DataAddPermission" Association="Self.FK_User_DataAddPermission">
-            <End Role="DataAddPermission" EntitySet="DataAddPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_DataViewPermission" Association="Self.FK_User_DataViewPermission">
-            <End Role="DataViewPermission" EntitySet="DataViewPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_ReportPermission" Association="Self.FK_User_ReportPermission">
-            <End Role="ReportPermission" EntitySet="ReportPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
             <End Role="UserType" EntitySet="UserType" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Verify" Association="Self.FK_User_Verify">
-            <End Role="Verify" EntitySet="Verify" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
@@ -206,7 +142,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_DataAddPermission" FromRole="DataAddPermission" ToRole="User" />
         </EntityType>
         <EntityType Name="DataViewPermission">
           <Key>
@@ -214,7 +149,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_DataViewPermission" FromRole="DataViewPermission" ToRole="User" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
@@ -230,7 +164,6 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_ReportPermission" FromRole="ReportPermission" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -257,16 +190,12 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="IDDataAddPermission" Type="Int32" />
-          <Property Name="IDReportPermission" Type="Int32" />
-          <Property Name="IDDataViewPermission" Type="Int32" />
-          <Property Name="IDVerify" Type="Int32" />
-          <NavigationProperty Name="DataAddPermission" Relationship="Self.FK_User_DataAddPermission" FromRole="User" ToRole="DataAddPermission" />
-          <NavigationProperty Name="DataViewPermission" Relationship="Self.FK_User_DataViewPermission" FromRole="User" ToRole="DataViewPermission" />
+          <Property Name="IDDataAddPermission" Type="Boolean" />
+          <Property Name="IDReportPermission" Type="Boolean" />
+          <Property Name="IDDataViewPermission" Type="Boolean" />
+          <Property Name="IDVerify" Type="Boolean" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
-          <NavigationProperty Name="ReportPermission" Relationship="Self.FK_User_ReportPermission" FromRole="User" ToRole="ReportPermission" />
           <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
-          <NavigationProperty Name="Verify" Relationship="Self.FK_User_Verify" FromRole="User" ToRole="Verify" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -293,32 +222,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Verify" FromRole="Verify" ToRole="User" />
         </EntityType>
-        <Association Name="FK_User_DataAddPermission">
-          <End Role="DataAddPermission" Type="Self.DataAddPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DataAddPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDDataAddPermission" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_DataViewPermission">
-          <End Role="DataViewPermission" Type="Self.DataViewPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DataViewPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDDataViewPermission" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Gender">
           <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -328,18 +232,6 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="IDGender" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_ReportPermission">
-          <End Role="ReportPermission" Type="Self.ReportPermission" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReportPermission">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDReportPermission" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -355,19 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_User_Verify">
-          <End Role="Verify" Type="Self.Verify" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Verify">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="IDVerify" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="dbStrazhnikEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="dbStrazhnikEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DataAddPermission" EntityType="Self.DataAddPermission" />
           <EntitySet Name="DataViewPermission" EntityType="Self.DataViewPermission" />
           <EntitySet Name="Gender" EntityType="Self.Gender" />
@@ -377,28 +257,12 @@
           <EntitySet Name="UserLogin" EntityType="Self.UserLogin" />
           <EntitySet Name="UserType" EntityType="Self.UserType" />
           <EntitySet Name="Verify" EntityType="Self.Verify" />
-          <AssociationSet Name="FK_User_DataAddPermission" Association="Self.FK_User_DataAddPermission">
-            <End Role="DataAddPermission" EntitySet="DataAddPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_DataViewPermission" Association="Self.FK_User_DataViewPermission">
-            <End Role="DataViewPermission" EntitySet="DataViewPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
             <End Role="Gender" EntitySet="Gender" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
-          <AssociationSet Name="FK_User_ReportPermission" Association="Self.FK_User_ReportPermission">
-            <End Role="ReportPermission" EntitySet="ReportPermission" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
             <End Role="UserType" EntitySet="UserType" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Verify" Association="Self.FK_User_Verify">
-            <End Role="Verify" EntitySet="Verify" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
@@ -407,7 +271,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище dbStrazhnikModelContainer" CdmEntityContainer="dbStrazhnikEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dbStrazhnikModelContainer" CdmEntityContainer="dbStrazhnikEntities1">
           <EntitySetMapping Name="DataAddPermission">
             <EntityTypeMapping TypeName="dbStrazhnikModel.DataAddPermission">
               <MappingFragment StoreEntitySet="DataAddPermission">

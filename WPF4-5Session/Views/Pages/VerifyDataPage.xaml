@@ -15,19 +15,20 @@
             <RowDefinition Height="90"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
-            <DataGrid Name="UserDataGrid" AutoGenerateColumns="False">
+            <DataGrid x:Name="UserDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Users}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Фамилия" Binding="{Binding FisrtName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Имя" Binding="{Binding LastName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Должность" Binding="{Binding Post}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Тип пользователя" Binding="{Binding UserType.Title}"></DataGridTextColumn>
+                    <DataGridComboBoxColumn x:Name="cmdUserTypes" Header="Тип пользоваться" ItemsSource="{Binding UserTypes}" SelectedItemBinding="{Binding User.UserType}" DisplayMemberPath="Title"></DataGridComboBoxColumn>
+                    
                     <DataGridTextColumn Header="Логин" Binding="{Binding Login}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Секретное слово" Binding="{Binding SecretWord}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Одобрить" Binding="{Binding Verify.Title}">
+                    <DataGridCheckBoxColumn Header="Одобрить" Binding="{Binding IDVerify , UpdateSourceTrigger=PropertyChanged}" ></DataGridCheckBoxColumn>
 
-                    </DataGridTextColumn>
+          
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -25,9 +25,6 @@ namespace WPF4_5Session.Views.Pages
         public UserType UserType { get; set; }
         public User User { get; set; }
         public List<User> Users { get; set; }
-        public DataViewPermission DataViewPermission { get; set; }
-        public ReportPermission ReportPermission { get; set; }
-        public DataAddPermission DataAddPermission { get; set; }
         public MandatDataPage(User user)
         {
             InitializeComponent();
@@ -48,7 +45,8 @@ namespace WPF4_5Session.Views.Pages
                 var selectedItem = UserDataGrid.SelectedItem as User;
                 if (selectedItem != null)
                 {
-                    NavigationService.Navigate(new MandatEditPage(selectedItem));
+                    Data.db.SaveChanges();
+                    MessageBox.Show("Данные сохранены", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {

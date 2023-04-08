@@ -20,19 +20,28 @@ namespace WPF4_5Session.Views.Pages
     /// <summary>
     /// Логика взаимодействия для VerifyDataPage.xaml
     /// </summary>
+
     public partial class VerifyDataPage : Page
     {
         public UserType UserType { get; set; }
         public User User { get; set; }
+        public List<UserType> UserTypes { get; set; }
         public List<User> Users { get; set; }
-        public Verify Verify { get; set; }
+
+
         public VerifyDataPage(User user)
         {
             InitializeComponent();
             User = user;
+            cmdUserTypes.ItemsSource = Data.db.UserType.ToList();
+
             this.DataContext = this;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Users = Data.db.User.ToList();
@@ -45,8 +54,9 @@ namespace WPF4_5Session.Views.Pages
             {
                 var selectedItem = UserDataGrid.SelectedItem as User;
                 if (selectedItem != null)
-                {
-                    NavigationService.Navigate(new VerifyEditPage(selectedItem));
+                {                                  
+                    Data.db.SaveChanges();
+                    MessageBox.Show("Данные сохранены", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPF4_5Session.Context;
+using WPF4_5Session.Model;
 
 namespace WPF4_5Session.Views.Windows
 {
@@ -20,9 +21,13 @@ namespace WPF4_5Session.Views.Windows
     /// </summary>
     public partial class Avtorization : Window
     {
+        public User User { get; set; }
+        public List<UserType> UserTypes { get; set; }
         public Avtorization()
         {
             InitializeComponent();
+            UserTypes = Data.db.UserType.ToList();
+            this.DataContext = this;
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

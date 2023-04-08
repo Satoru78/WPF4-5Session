@@ -64,57 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Views\Pages\ControlMainPage.xaml.cs">
-      <DependentUpon>ControlMainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\MandatDataPage.xaml.cs">
-      <DependentUpon>MandatDataPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\MandatEditPage.xaml.cs">
-      <DependentUpon>MandatEditPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\VerifyDataPage.xaml.cs">
-      <DependentUpon>VerifyDataPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Pages\VerifyEditPage.xaml.cs">
-      <DependentUpon>VerifyEditPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Windows\SecurityManagment.xaml.cs">
-      <DependentUpon>SecurityManagment.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Views\Pages\ControlMainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\MandatDataPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\MandatEditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\VerifyDataPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Pages\VerifyEditPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Windows\Avtorization.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Windows\DostupControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Context\Data.cs" />
     <Compile Include="Model\DataAddPermission.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -157,6 +106,43 @@
     <Compile Include="Model\Verify.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\ControlMainPage.xaml.cs">
+      <DependentUpon>ControlMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\MandatDataPage.xaml.cs">
+      <DependentUpon>MandatDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\VerifyDataPage.xaml.cs">
+      <DependentUpon>VerifyDataPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Windows\SecurityManagment.xaml.cs">
+      <DependentUpon>SecurityManagment.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Pages\ControlMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\MandatDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\VerifyDataPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\Avtorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\DostupControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Context\Data.cs" />
     <Compile Include="Views\Windows\Avtorization.xaml.cs">
       <DependentUpon>Avtorization.xaml</DependentUpon>
     </Compile>
@@ -203,12 +189,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -13,10 +13,10 @@ namespace WPF4_5Session.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbStrazhnikEntities : DbContext
+    public partial class dbStrazhnikEntities1 : DbContext
     {
-        public dbStrazhnikEntities()
-            : base("name=dbStrazhnikEntities")
+        public dbStrazhnikEntities1()
+            : base("name=dbStrazhnikEntities1")
         {
         }
     

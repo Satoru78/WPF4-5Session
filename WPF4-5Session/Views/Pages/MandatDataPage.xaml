@@ -21,10 +21,9 @@
                     <DataGridTextColumn Header="Имя" Binding="{Binding LastName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Должность" Binding="{Binding Post}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Добавление данных" Binding="{Binding DataAddPermission.Title}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Просмотр данных" Binding="{Binding DataViewPermission.Title}">
-                    </DataGridTextColumn>
-                    <DataGridTextColumn Header="Формировние отчетов" Binding="{Binding ReportPermission.Title}"></DataGridTextColumn>
+                    <DataGridCheckBoxColumn Header="Добавление данных" Binding="{Binding IDDataAddPermission , UpdateSourceTrigger=PropertyChanged}" ></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Просмотр данных" Binding="{Binding IDDataViewPermission , UpdateSourceTrigger=PropertyChanged}" ></DataGridCheckBoxColumn>
+                    <DataGridCheckBoxColumn Header="Формировние отчетов" Binding="{Binding IDReportPermission , UpdateSourceTrigger=PropertyChanged}" ></DataGridCheckBoxColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

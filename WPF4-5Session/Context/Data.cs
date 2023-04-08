@@ -9,6 +9,6 @@ namespace WPF4_5Session.Context
 {
     public static class Data
     {
-        public static dbStrazhnikEntities db = new dbStrazhnikEntities();
+        public static dbStrazhnikEntities1 db = new dbStrazhnikEntities1();
     }
 }

@@ -25,16 +25,12 @@ namespace WPF4_5Session.Model
         public string Login { get; set; }
         public string Password { get; set; }
         public string Image { get; set; }
-        public Nullable<int> IDDataAddPermission { get; set; }
-        public Nullable<int> IDReportPermission { get; set; }
-        public Nullable<int> IDDataViewPermission { get; set; }
-        public Nullable<int> IDVerify { get; set; }
+        public Nullable<bool> IDDataAddPermission { get; set; }
+        public Nullable<bool> IDReportPermission { get; set; }
+        public Nullable<bool> IDDataViewPermission { get; set; }
+        public Nullable<bool> IDVerify { get; set; }
     
-        public virtual DataAddPermission DataAddPermission { get; set; }
-        public virtual DataViewPermission DataViewPermission { get; set; }
         public virtual Gender Gender { get; set; }
-        public virtual ReportPermission ReportPermission { get; set; }
         public virtual UserType UserType { get; set; }
-        public virtual Verify Verify { get; set; }
     }
 }
